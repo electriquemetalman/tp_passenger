@@ -17,6 +17,10 @@ INNER JOIN orderdetails ON orders.orderNumber = orderdetails.orderNumber
 WHERE (STATUS = 'Shipped') AND (shippedDate IS NOT NULL) AND (shippedDate LIKE "2004-%")
 GROUP BY shippedDate
 ORDER BY shippedDate;
+/*ou*/
+select Month(orderDate) as mois ,  YEAR(orderDate) as annee,COUNT(orderDate) as nombre
+from orders 
+GROUP BY Month(orderDate),YEAR(orderDate)
 
 /*question 3*/
 
