@@ -56,7 +56,7 @@ while exitApp == "no":
             print(allBus)
             create_bus = str(input("vouler vous cree un autre buss:yes/no: "))
         if  create_bus == "no":
-            print("*******Vous pouver effectuer d'autre operation********* ")
+            print(" ")
     elif  create == 2:
         tPassenger = copy.deepcopy(passenger)
         tPassenger["id_passenger"] = id_pass
@@ -76,18 +76,45 @@ while exitApp == "no":
             print(allPassenger)
             create_passenger = str(input("vouler vous cree un autre passager:yes/no: "))
         if create_passenger == "no":
-            print("*******Vous pouver effectuer d'autre operation*********")
+            print(" ")
     elif  create == 3:
+        pO = 0
+        the_passenger = 0
         print("voici la liste des bus disponible")
         print(f"liste des bus {allBus}")
         print(f"liste des passager {allPassenger}")   
         busChoice = int(input("choisir un bus pour un passager:(juste id du bus) ")) 
         passengerChoice = int(input("choisir le passager pour le bus que vous aver selectionner:(juste id) ")) 
+        for passg in allPassenger:
+            if passg['id_passenger'] == allPassenger:
+                print("")
+        the_passenger = passg['name']
         for id in allBus:
             if id['id'] == busChoice:
-                for passager in id['passager_bus']:
-                    passager[0] = passengerChoice
-        print(allBus)            
+                id["passager_bus"].append(the_passenger)
+                pO = pO + 1
+                id["place_oq"] = pO
+        print(allBus)
+        add_passenger = str(input("vouler vous ajouter a nouvau un passager a un buss ?? :yes/no: "))
+        while add_passenger == "yes":
+            print("voici la liste des bus disponible")
+            print(f"liste des bus {allBus}")
+            print(f"liste des passager {allPassenger}")   
+            busChoice = int(input("choisir un bus pour un passager:(juste id du bus) ")) 
+            passengerChoice = int(input("choisir le passager pour le bus que vous aver selectionner:(juste id) ")) 
+            for passg in allPassenger:
+                if passg['id_passenger'] == allPassenger:
+                    print("")
+            the_passenger = passg['name']
+            for id in allBus:
+                if id['id'] == busChoice:
+                    id["passager_bus"].append(the_passenger)
+                    pO = pO + 1
+                    id["place_oq"] = pO
+            print(allBus)
+            add_passenger = str(input("vouler vous ajouter a nouvau un passager a un buss ?? :yes/no: "))
+        if add_passenger == "no":
+            print("")                
     elif  create == 4:
         pd = 0
         po = 0
@@ -107,4 +134,4 @@ while exitApp == "no":
                 kg = bus['kg']
         print(f"le nombre de kg pour un bus est de {kg}")
     elif  create == 6:
-        print("bn")              
+        print("")              
