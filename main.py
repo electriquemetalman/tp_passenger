@@ -80,7 +80,6 @@ while exitApp == "no":
     elif  create == 3:
         pO = 0
         the_passenger = 0
-        print("voici la liste des bus disponible")
         print(f"liste des bus {allBus}")
         print(f"liste des passager {allPassenger}")   
         busChoice = int(input("choisir un bus pour un passager:(juste id du bus) ")) 
@@ -134,4 +133,33 @@ while exitApp == "no":
                 kg = bus['kg']
         print(f"le nombre de kg pour un bus est de {kg}")
     elif  create == 6:
-        print("")              
+        pO = 0
+        print(f"liste des bus {allBus}")
+        print(f"liste des passager {allPassenger}")   
+        busChoice = int(input("choisir un bus pour un passager:(juste id du bus) ")) 
+        passenger_name = str(input("entrer le nom d'un passager:"))
+        for bus in allBus:
+            if bus['id'] == busChoice:
+                bus["passager_bus"].remove(passenger_name)
+                pO = bus["place_oq"]
+                pO = pO - 1
+                bus["place_oq"] = pO
+        print(allBus)
+        delate_pasenger = str(input("vouler vous ajouter a nouvau un passager a un buss ?? :yes/no: "))
+        while delate_pasenger == "yes":
+            print(f"liste des bus {allBus}")
+            print(f"liste des passager {allPassenger}")   
+            busChoice = int(input("choisir un bus pour un passager:(juste id du bus) ")) 
+            passenger_name = str(input("entrer le nom d'un passager:"))
+            for bus in allBus:
+                if bus['id'] == busChoice:
+                    bus["passager_bus"].remove(passenger_name)
+                    pO = bus["place_oq"]
+                    pO = pO - 1
+                    bus["place_oq"] = pO
+            print(allBus)
+            delate_pasenger = str(input("vouler vous ajouter a nouvau un passager a un buss ?? :yes/no: "))
+        if delate_pasenger == "no":    
+            print("") 
+
+
